@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Kanit", sans-serif;
-    --text: #f2ede1;
-    --background: #1c170a;
-    --primary: #e4cd9a;
-    --secondary: #926e1d;
-    --accent: #e0a420;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    --text: #eee6fa;
+    --background: #2c2e31;
+    --primary: #b792ea;
+    --secondary: #e12e2e;
+    --accent: #4ad836;
     color: var(--text);
     background-color: var(--background);
 
@@ -18,7 +17,6 @@
 .maincontainer {
     width: 60%;
     margin: auto;
-    border: 2px solid var(--accent);
     height: auto;
     margin-top: 40px;
     border-radius: 20px;
@@ -45,14 +43,16 @@ textarea {
     width: 80%;
     font-size: 24px;
     resize: none;
+    font-family: "Roboto Mono", monospace;
     border: 1px solid var(--accent);
     border-radius: 2px;
 }
 
-.correct {
-    color: green;
+span {
+    font-family: "Roboto Mono", monospace;
+    transition: .1s;
+    height: 10px;
 }
-
-.incorrect {
-    color: red;
+.active{
+    border-bottom: 10px solid #fff;
 }
