@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    --text: #eee6fa;
+    --background: #2c2e31;
+    --primary: #b792ea;
+    --secondary: #e12e2e;
+    --accent: #4ad836;
+    color: var(--text);
+    background-color: var(--background);
+
+}
+
+.maincontainer {
+    width: 60%;
+    margin: auto;
+    height: auto;
+    margin-top: 40px;
+    border-radius: 20px;
+    overflow: none;
+    padding: 20px;
+}
+
+.header {
+    font-size: 28px;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.text-content {
+    font-size: 20px;
+    user-select: none;
+}
+
+textarea {
+    margin-top: 20px;
+    height: 100px;
+    width: 80%;
+    font-size: 24px;
+    resize: none;
+    font-family: "Roboto Mono", monospace;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+}
+
+span {
+    font-family: "Roboto Mono", monospace;
+    transition: .1s;
+    height: 10px;
+}
+.active{
+    border-bottom: 10px solid #fff;
+}
