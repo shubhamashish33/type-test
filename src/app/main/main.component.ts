@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { AppService } from '../app.service';
 import { Router } from '@angular/router';
 @Component({
@@ -7,25 +7,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   title = 'type-text';
   textInput: string = '';
   messageCurrentValue: string = "";
   messageCurrentIndex: number = -1;
   message: string = "";
   inputArray: string[];
-  wpm: number;
+  wpm: number = 0;
   misTypedWord: number = 0;
   correctTypedWord: number = 0;
   timerId: any;
-  timeLeft: number = 3;
+  time: number;
   correctColor: string = '#4ad836';
   incorrectColor: string = '#e12e2e';
   markerColor: string = '#b792ea';
   toStartTimer: boolean = true;
   key: string = 'typingStats';
-
-  constructor(private appService: AppService, private router: Router) { }
+  timeFlag: boolean = false;
+  constructor(private appService: AppService, private router: Router, private renderer: Renderer2, private el: ElementRef) { }
   ngOnInit() {
     // this.appService.getQuotes().subscribe((response: any) => {
     //   this.message = response[this.getRandomNumber()];
@@ -47,12 +46,11 @@ export class MainComponent implements OnInit {
       document.getElementById('charspan0').style.backgroundColor = "#ffffff2f";
     }, 1000)
   }
-
   startTimer(seconds: number) {
-    this.timeLeft = seconds;
+    this.time = seconds;
     this.timerId = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft--;
+      if (this.time > 0) {
+        this.time--;
       }
       else {
         clearInterval(this.timerId);
@@ -61,15 +59,21 @@ export class MainComponent implements OnInit {
     }, 1000)
   }
   redirectPage() {
+    if (this.wpm > 0) {
+      this.onSaveData();
+      this.router.navigate(['/dashboard']);
+    }
+  }
+  onSaveData() {
     let savedObj: any = {}
     let previousSavedData: any = this.appService.getDataFromLocal(this.key);
     savedObj.misTypedWord = this.misTypedWord;
     savedObj.wpm = this.wpm;
     savedObj.correctTypedWord = this.correctTypedWord;
+    savedObj.totalCharacter = this.message.length;
     previousSavedData.push(savedObj);
     this.appService.setDataToLocal(previousSavedData, this.key);
     this.appService.setKey(this.key);
-    this.router.navigate(['/dashboard']);
   }
   getRandomNumber(): number {
     return Math.floor(Math.random() * 5);
@@ -116,13 +120,12 @@ export class MainComponent implements OnInit {
     this.wpm = 0;
     this.correctTypedWord = 0;
     this.misTypedWord = 0;
-
     document.getElementById(`charspan${this.messageCurrentIndex + 1}`).style.backgroundColor = "transparent";
     document.getElementById('charspan0').style.backgroundColor = "#ffffff2f";
   }
   onKeyDown(event: KeyboardEvent) {
-    if(this.toStartTimer){
-      this.startTimer(this.timeLeft);
+    if (this.toStartTimer) {
+      this.startTimer(this.time);
     }
     this.toStartTimer = false;
     const Length = this.textInput.length;
@@ -154,6 +157,8 @@ export class MainComponent implements OnInit {
   removeLastCharacter() {
     this.messageCurrentValue = this.messageCurrentValue.slice(0, -1);
   }
-
-
+  getTime(buttonNumber: number) {
+    this.timeFlag = true;
+    this.time = buttonNumber;
+  }
 }

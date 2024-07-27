@@ -1,18 +1,39 @@
 <div class="container">
-    <div class="current">
-        <div class="currentContainer">
-            <h3>Words Per Minute: {{wpm}}</h3>
-            <h3>Miss Typed Word: {{misTypedWord}}</h3>
-            <h3>Correct Typed Word: {{correctTypedWord}}</h3>
+    <div class="top-header">
+        <h3>Current Stats</h3>
+        <div class="current">
+            <div class="currentContainer">
+                <h3>Words Per Minute: {{wpm}}</h3>
+                <h3>Incorrect Characters: {{misTypedWord}}</h3>
+                <h3>Correct Characters: {{correctTypedWord}}</h3>
+            </div>
+            <div class="rating">
+                <h2>{{rating}}</h2>
+                <h3 style="padding-top: 20px;">RATING</h3>
+            </div>
+            <div class="testresult">
+                <h3> Maximum WPM:  {{highestWPM}}</h3>
+                <h3>Raw WPM: {{rawWpm}}</h3>
+                <h3>Accuracy : {{testAccuracy}}%</h3>
+            </div>
         </div>
     </div>
     <div class="savedDataContainer">
-        <ng-container *ngFor="let savedData of savedData">
-            <div class="savedData">
-                <p>WPM: {{savedData.wpm}}</p>
-                <p>MisTyped: {{savedData.misTypedWord}}</p>
-                <p>Correctly Typed: {{savedData.correctTypedWord}}</p>
-            </div>
-        </ng-container>
+        <h3 style="margin-bottom: 20px;">Saved Previous Data</h3>
+        <table>
+            <tr>
+                <th>Sr. No</th>
+                <th>Words Per Minutes</th>
+                <th>Incorrect Characters</th>
+                <th>Correct Characters</th>
+            </tr>
+                <tr *ngFor="let savedData of savedData; let indx = index;">
+                    <td>{{indx + 1}}</td>
+                    <td>{{savedData.wpm}}</td>
+                    <td>{{savedData.misTypedWord}}</td>
+                    <td>{{savedData.correctTypedWord}}</td>
+                </tr>
+        </table>
+        
     </div>
 </div>

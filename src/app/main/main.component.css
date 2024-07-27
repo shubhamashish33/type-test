@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0rem;
+    padding: 0rem;
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", sans-serif;
     --text: #eee6fa;
@@ -11,48 +11,58 @@
     --accent: #4ad836;
     color: var(--text);
     background-color: var(--background);
-
 }
 
 .maincontainer {
     width: 60%;
     margin: auto;
     height: auto;
-    margin-top: 40px;
-    border-radius: 20px;
+    margin-top: 2.5rem;
+    border-radius: 1.25rem;
     overflow: none;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .header {
-    font-size: 28px;
+    font-size: 1.75rem;
 }
 
 .content {
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
-
+.time-selection{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.25rem;
+    align-items: center;
+}
+.time-selection button{
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+.active{
+    color: var(--primary);
+    font-weight: bold;
+}
 .text-content {
-    font-size: 20px;
+    font-size: 1.25rem;
     user-select: none;
 }
 
 textarea {
-    margin-top: 20px;
-    height: 100px;
+    margin-top: 1.25rem;
+    height: 6.25rem;
     width: 80%;
-    font-size: 24px;
+    font-size: 1.5rem;
     resize: none;
     font-family: "Roboto Mono", monospace;
-    border: 1px solid var(--accent);
-    border-radius: 2px;
+    border: 0.0625rem solid var(--accent);
+    border-radius: 0.125rem;
 }
 
 span {
     font-family: "Roboto Mono", monospace;
     transition: .1s;
-    height: 10px;
-}
-.active{
-    border-bottom: 10px solid #fff;
+    height: 0.625rem;
 }

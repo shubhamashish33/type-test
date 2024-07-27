@@ -4,7 +4,13 @@
     </div>
     <div class="container" style="text-align: center;">
       <div class="content">
-        <h1 style="margin-bottom: 20px;">Time left: {{ timeLeft }} seconds</h1>
+        <div class="time-selection" *ngIf="!timeFlag">
+          <h3>Select duration before starting</h3>
+          <button (click)="getTime(15)" [ngClass]="{'active': time === 15}">15</button>
+          <button (click)="getTime(30)" [ngClass]="{'active': time === 30}">30</button>
+          <button (click)="getTime(60)" [ngClass]="{'active': time === 60}">60</button>
+        </div>
+        <h1 style="margin-bottom: 20px;" *ngIf="timeFlag">Time left: {{ time }} seconds</h1>
         <div class="messageBox">
           <p class="text-content">
             <ng-container *ngFor="let word of inputArray; let wordIndex = index">
@@ -17,7 +23,7 @@
           <textarea type="textarea" name="textInput" id="text-input" [(ngModel)]="textInput" (input)="splitText();"
             (keydown)="onKeyDown($event)" autofocus>
             </textarea>
-          <div class="scorecard">
+          <div class="scorecard" *ngIf="">
             <p>Words Per Minutes: {{wpm}}</p>
             <p>Correctly Typed Characters: {{correctTypeWord}}</p>
             <p>Mistyped Characters: {{misTypedWord}}</p>
