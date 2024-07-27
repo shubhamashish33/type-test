@@ -20,7 +20,7 @@
             </ng-container>
           </p>
         </div>
-        <div class="inputBox">
+        <div class="inputBox" *ngIf="timeFlag">
           <textarea type="textarea" name="textInput" id="text-input" [(ngModel)]="textInput" (input)="splitText();"
             (keydown)="onKeyDown($event)" autofocus>
             </textarea>

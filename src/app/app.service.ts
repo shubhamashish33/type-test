@@ -9,6 +9,7 @@ export class AppService {
   private misTypedWord: number = 0;
   private correctTypeWord: number = 0;
   private key: string;
+  private allowRedirect: boolean;
   constructor(private httpclient: HttpClient) { }
 
   getQuotes() {
@@ -45,5 +46,11 @@ export class AppService {
   }
   setDataToLocal(savedData: any[], key: string){
     localStorage.setItem(key, JSON.stringify(savedData));
+  }
+  getAllowRedirect(){
+    return this.allowRedirect;
+  }
+  setAllowRedirect(allowRedirect: boolean){
+    this.allowRedirect = allowRedirect;
   }
 }

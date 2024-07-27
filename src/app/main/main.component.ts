@@ -24,6 +24,7 @@ export class MainComponent implements OnInit {
   toStartTimer: boolean = true;
   key: string = 'typingStats';
   timeFlag: boolean = false;
+  public allowRedirect: boolean;
   constructor(private appService: AppService, private router: Router, private renderer: Renderer2, private el: ElementRef) { }
   ngOnInit() {
     this.appService.getQuotes().subscribe((response: any) => {
@@ -32,6 +33,9 @@ export class MainComponent implements OnInit {
       this.inputArray = this.message.split("");
       this.getSpanElement();
     });
+    // this.message = "Shubham Ashish is here"
+    // this.inputArray = this.message.split("");
+    // this.getSpanElement();
   }
   ngOnDestroy() {
     if (this.timerId) {
@@ -56,14 +60,17 @@ export class MainComponent implements OnInit {
     }, 1000)
   }
   redirectPage() {
+    console.log("this.wpm -> ", this.wpm);
     if (this.wpm > 0) {
       this.onSaveData();
-      this.router.navigate(['/dashboard']);
+      this.allowRedirect = true;
+      this.appService.setAllowRedirect(this.allowRedirect);
+      this.router.navigate(['dashboard']);
     }
   }
   onSaveData() {
     let savedObj: any = {}
-    let previousSavedData: any = this.appService.getDataFromLocal(this.key);
+    let previousSavedData: any = this.appService.getDataFromLocal(this.key) ? this.appService.getDataFromLocal(this.key) : [];
     savedObj.misTypedWord = this.misTypedWord;
     savedObj.wpm = this.wpm;
     savedObj.correctTypedWord = this.correctTypedWord;
