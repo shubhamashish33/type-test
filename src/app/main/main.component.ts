@@ -26,15 +26,12 @@ export class MainComponent implements OnInit {
   timeFlag: boolean = false;
   constructor(private appService: AppService, private router: Router, private renderer: Renderer2, private el: ElementRef) { }
   ngOnInit() {
-    // this.appService.getQuotes().subscribe((response: any) => {
-    //   this.message = response[this.getRandomNumber()];
-    //   this.message = this.message.replace(/\. +/g, ". ");
-    //   this.inputArray = this.message.split("");
-    //   this.getSpanElement();
-    // });
-    this.message = "Shubham Ashish is here"
-    this.inputArray = this.message.split("");
-    this.getSpanElement();
+    this.appService.getQuotes().subscribe((response: any) => {
+      this.message = response[this.getRandomNumber()];
+      this.message = this.message.replace(/\. +/g, ". ");
+      this.inputArray = this.message.split("");
+      this.getSpanElement();
+    });
   }
   ngOnDestroy() {
     if (this.timerId) {
