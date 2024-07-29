@@ -1,12 +1,12 @@
 <h2 class="mobile-msg">Please open this using larger screen devices to test your typing speed.</h2>
-<div class="maincontainer" *ngIf="inputArray">
+<div class="maincontainer">
     <div class="header" style="text-align: center;">
       <h1>{{title | titlecase}}</h1>
     </div>
     <div class="container" style="text-align: center;">
       <div class="content">
         <div class="time-selection" *ngIf="!timeFlag">
-          <h3>Select duration before starting</h3>
+          <h3>Select duration to start</h3>
           <button (click)="getTime(15)" [ngClass]="{'active': time === 15}">15</button>
           <button (click)="getTime(30)" [ngClass]="{'active': time === 30}">30</button>
           <button (click)="getTime(60)" [ngClass]="{'active': time === 60}">60</button>

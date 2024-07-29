@@ -25,17 +25,77 @@ export class MainComponent implements OnInit {
   key: string = 'typingStats';
   timeFlag: boolean = false;
   public allowRedirect: boolean;
-  constructor(private appService: AppService, private router: Router, private renderer: Renderer2, private el: ElementRef) { }
+  words: string[] = [
+    'cat', 'dog', 'run', 'eat', 'happy', 'sad', 'house', 'tree', 'car', 'city',
+    'jump', 'swim', 'laugh', 'cry', 'book', 'pen', 'school', 'teacher', 'student', 'apple',
+    'banana', 'orange', 'grape', 'computer', 'phone', 'music', 'song', 'dance', 'movie', 'actor',
+    'actress', 'bird', 'fish', 'water', 'river', 'mountain', 'forest', 'sun', 'moon', 'star',
+    'friend', 'family', 'love', 'hate', 'game', 'play', 'watch', 'listen', 'write', 'read',
+    'story', 'poem', 'picture', 'photo', 'video', 'camera', 'travel', 'journey', 'vacation', 'holiday',
+    'work', 'job', 'office', 'company', 'boss', 'employee', 'meeting', 'talk', 'speak', 'hear',
+    'listen', 'feel', 'think', 'imagine', 'create', 'build', 'destroy', 'fix', 'help', 'save',
+    'danger', 'safe', 'quiet', 'loud', 'small', 'big', 'tiny', 'huge', 'old', 'new',
+    'young', 'age', 'baby', 'child', 'teen', 'adult', 'man', 'woman', 'boy', 'girl',
+    'sky', 'cloud', 'rain', 'snow', 'wind', 'storm', 'light', 'dark', 'day', 'night',
+    'morning', 'evening', 'summer', 'winter', 'spring', 'autumn', 'season', 'year', 'month', 'week',
+    'day', 'hour', 'minute', 'second', 'time', 'clock', 'watch', 'calendar', 'birthday', 'party',
+    'celebrate', 'festival', 'holiday', 'gift', 'present', 'surprise', 'cake', 'candle', 'balloon', 'decoration',
+    'invitation', 'guest', 'host', 'food', 'drink', 'meal', 'breakfast', 'lunch', 'dinner', 'snack',
+    'dessert', 'ice', 'cream', 'chocolate', 'candy', 'cookie', 'pie', 'bread', 'butter', 'cheese',
+    'milk', 'coffee', 'tea', 'juice', 'soda', 'water', 'wine', 'beer', 'liquor', 'drink',
+    'glass', 'cup', 'bottle', 'plate', 'bowl', 'fork', 'spoon', 'knife', 'napkin', 'table',
+    'chair', 'sofa', 'bed', 'pillow', 'blanket', 'sheet', 'curtain', 'lamp', 'light', 'fan',
+    'air', 'conditioner', 'heater', 'room', 'kitchen', 'bathroom', 'bedroom', 'living', 'dining', 'hall',
+    'house', 'apartment', 'building', 'floor', 'ceiling', 'wall', 'window', 'door', 'roof', 'garden',
+    'yard', 'garage', 'driveway', 'street', 'road', 'highway', 'bridge', 'tunnel', 'path', 'sidewalk',
+    'crosswalk', 'intersection', 'traffic', 'light', 'sign', 'signal', 'stop', 'go', 'green', 'red',
+    'yellow', 'blue', 'black', 'white', 'color', 'paint', 'draw', 'sketch', 'art', 'artist',
+    'gallery', 'museum', 'exhibit', 'sculpture', 'statue', 'portrait', 'landscape', 'photograph', 'image', 'picture',
+    'camera', 'lens', 'flash', 'memory', 'card', 'film', 'roll', 'digital', 'print', 'copy',
+    'document', 'file', 'folder', 'paper', 'notebook', 'journal', 'diary', 'note', 'message', 'letter',
+    'envelope', 'stamp', 'post', 'mail', 'email', 'send', 'receive', 'address', 'contact', 'phone',
+    'call', 'text', 'chat', 'talk', 'conversation', 'discussion', 'meeting', 'appointment', 'schedule', 'calendar',
+    'date', 'time', 'hour', 'minute', 'second', 'moment', 'instance', 'event', 'occasion', 'opportunity',
+    'chance', 'possibility', 'probability', 'certainty', 'fact', 'truth', 'belief', 'opinion', 'idea', 'thought',
+    'concept', 'notion', 'view', 'perspective', 'vision', 'dream', 'goal', 'aim', 'target', 'plan',
+    'strategy', 'tactic', 'method', 'approach', 'system', 'process', 'procedure', 'step', 'action', 'move',
+    'decision', 'choice', 'option', 'alternative', 'preference', 'priority', 'importance', 'significance', 'value', 'worth',
+    'benefit', 'advantage', 'disadvantage', 'strength', 'weakness', 'opportunity', 'threat', 'risk', 'reward', 'challenge',
+    'difficulty', 'problem', 'issue', 'matter', 'question', 'query', 'inquiry', 'investigation', 'research', 'study',
+    'experiment', 'test', 'trial', 'analysis', 'evaluation', 'assessment', 'review', 'summary', 'report', 'document',
+    'record', 'file', 'data', 'information', 'knowledge', 'wisdom', 'understanding', 'insight', 'awareness', 'consciousness',
+    'thought', 'idea', 'concept', 'notion', 'belief', 'opinion', 'view', 'perspective', 'vision', 'dream',
+    'goal', 'aim', 'target', 'objective', 'intention', 'purpose', 'plan', 'strategy', 'tactic', 'method',
+    'approach', 'system', 'process', 'procedure', 'step', 'action', 'move', 'decision', 'choice', 'option',
+    'alternative', 'preference', 'priority', 'importance', 'significance', 'value', 'worth', 'benefit', 'advantage', 'disadvantage',
+    'strength', 'weakness', 'opportunity', 'threat', 'risk', 'reward', 'challenge', 'difficulty', 'problem', 'issue',
+    'matter', 'question', 'query', 'inquiry', 'investigation', 'research', 'study', 'experiment', 'test', 'trial',
+    'analysis', 'evaluation', 'assessment', 'review', 'summary', 'report', 'document', 'record', 'file', 'data',
+    'information', 'knowledge', 'wisdom', 'understanding', 'insight', 'awareness', 'consciousness', 'thought', 'idea', 'concept',
+    'notion', 'belief', 'opinion', 'view', 'perspective', 'vision', 'dream', 'goal', 'aim', 'target',
+    'objective', 'intention', 'purpose', 'plan', 'strategy', 'tactic', 'method', 'approach', 'system', 'process',
+    'procedure', 'step', 'action', 'move', 'decision', 'choice', 'option', 'alternative', 'preference', 'priority',
+    'importance', 'significance', 'value', 'worth', 'benefit', 'advantage', 'disadvantage', 'strength', 'weakness', 'opportunity',
+    'threat', 'risk', 'reward', 'challenge', 'difficulty', 'problem', 'issue', 'matter', 'question', 'query',
+    'inquiry', 'investigation', 'research', 'study', 'experiment', 'test', 'trial', 'analysis', 'evaluation', 'assessment',
+    'review', 'summary', 'report', 'document', 'record', 'file', 'data', 'information', 'knowledge', 'wisdom',
+    'understanding', 'insight', 'awareness', 'consciousness', 'thought', 'idea', 'concept', 'notion', 'belief', 'opinion',
+    'view', 'perspective', 'vision', 'dream', 'goal', 'aim', 'target', 'objective', 'intention', 'purpose',
+    'plan', 'strategy', 'tactic', 'method', 'approach', 'system', 'process', 'procedure', 'step', 'action',
+    'move', 'decision', 'choice', 'option', 'alternative', 'preference', 'priority', 'importance', 'significance', 'value'
+  ];
+  selectedTime: number;
+
+  constructor(private appService: AppService, private router: Router) { }
   ngOnInit() {
-    this.appService.getQuotes().subscribe((response: any) => {
-      this.message = response[this.getRandomNumber()];
-      this.message = this.message.replace(/\. +/g, ". ");
-      this.inputArray = this.message.split("");
-      this.getSpanElement();
-    });
+    // this.appService.getQuotes().subscribe((response: any) => {
+    //   this.message = response[this.getRandomNumber()];
+    //   this.message = this.message.replace(/\. +/g, ". ");
+    //   this.inputArray = this.message.split("");
+    //   this.getSpanElement();
+    // });
     // this.message = "Shubham Ashish is here"
-    // this.inputArray = this.message.split("");
-    // this.getSpanElement();
+
   }
   ngOnDestroy() {
     if (this.timerId) {
@@ -46,6 +106,30 @@ export class MainComponent implements OnInit {
     setTimeout(() => {
       document.getElementById('charspan0').style.backgroundColor = "#ffffff2f";
     }, 1000)
+  }
+  createWord(time: number) {
+    if (time == 15) {
+      for (let i = 0; i < 20; i++) {
+        this.message += this.words[this.getRandomNumber()] + " ";
+      }
+    }
+    else if (time == 30) {
+      for (let i = 0; i < 50; i++) {
+        this.message += this.words[this.getRandomNumber()] + " ";
+      }
+    }
+    else if (time == 60) {
+      for (let i = 0; i < 80; i++) {
+        this.message += this.words[this.getRandomNumber()] + " ";
+      }
+    }
+    else {
+      for (let i = 0; i < 40; i++) {
+        this.message += this.words[this.getRandomNumber()] + " ";
+      }
+    }
+    this.inputArray = this.message.split("");
+    this.getSpanElement();
   }
   startTimer(seconds: number) {
     this.time = seconds;
@@ -72,15 +156,14 @@ export class MainComponent implements OnInit {
     let savedObj: any = {}
     let previousSavedData: any = this.appService.getDataFromLocal(this.key) ? this.appService.getDataFromLocal(this.key) : [];
     savedObj.misTypedWord = this.misTypedWord;
-    savedObj.wpm = this.wpm;
+    savedObj.wpm = (this.wpm * (60 / this.selectedTime));
     savedObj.correctTypedWord = this.correctTypedWord;
-    savedObj.totalCharacter = this.message.length;
     previousSavedData.push(savedObj);
     this.appService.setDataToLocal(previousSavedData, this.key);
     this.appService.setKey(this.key);
   }
   getRandomNumber(): number {
-    return Math.floor(Math.random() * 5);
+    return Math.floor(Math.random() * 500);
   }
   splitText() {
     const Length = this.textInput.length;
@@ -112,7 +195,7 @@ export class MainComponent implements OnInit {
   }
   calculateWPM(charachterType: string) {
     const characterLength = charachterType.length;
-    this.wpm = (characterLength / 5)*(60/this.time);
+    this.wpm = (characterLength / 5);
   }
   resetCharSpan() {
     const charSpans = document.querySelectorAll(`[id^='charspan']`);
@@ -164,5 +247,7 @@ export class MainComponent implements OnInit {
   getTime(buttonNumber: number) {
     this.timeFlag = true;
     this.time = buttonNumber;
+    this.selectedTime = buttonNumber;
+    this.createWord(buttonNumber);
   }
 }

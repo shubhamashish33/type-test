@@ -24,6 +24,7 @@
     justify-content: space-around;
     margin-bottom: 2.5rem;
     padding: 1.25rem 0rem 0rem 0rem;
+    align-items: center;
 }
 
 .savedDataContainer, .top-header {
