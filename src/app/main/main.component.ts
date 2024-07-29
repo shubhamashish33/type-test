@@ -112,7 +112,7 @@ export class MainComponent implements OnInit {
   }
   calculateWPM(charachterType: string) {
     const characterLength = charachterType.length;
-    this.wpm = characterLength / 5;
+    this.wpm = (characterLength / 5)*(60/this.time);
   }
   resetCharSpan() {
     const charSpans = document.querySelectorAll(`[id^='charspan']`);
