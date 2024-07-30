@@ -88,13 +88,6 @@ export class MainComponent implements OnInit {
 
   constructor(private appService: AppService, private router: Router) { }
   ngOnInit() {
-    // this.appService.getQuotes().subscribe((response: any) => {
-    //   this.message = response[this.getRandomNumber()];
-    //   this.message = this.message.replace(/\. +/g, ". ");
-    //   this.inputArray = this.message.split("");
-    //   this.getSpanElement();
-    // });
-    // this.message = "Shubham Ashish is here"
   }
   ngOnDestroy() {
     if (this.timerId) {
