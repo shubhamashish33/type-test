@@ -1,29 +1,30 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { AppService } from '../app.service';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
-  title = 'type-text';
-  textInput: string = '';
-  messageCurrentValue: string = "";
-  messageCurrentIndex: number = -1;
-  message: string = "";
-  inputArray: string[];
-  wpm: number = 0;
-  misTypedWord: number = 0;
-  correctTypedWord: number = 0;
-  timerId: any;
-  time: number;
-  correctColor: string = '#4ad836';
-  incorrectColor: string = '#e12e2e';
-  markerColor: string = '#b792ea';
-  toStartTimer: boolean = true;
-  key: string = 'typingStats';
-  timeFlag: boolean = false;
+export class MainComponent implements OnInit, OnDestroy {
+  public title = 'type-text';
+  public textInput: string = '';
+  public messageCurrentValue: string = "";
+  public messageCurrentIndex: number = -1;
+  public message: string = "";
+  public inputArray: string[];
+  public wpm: number = 0;
+  public misTypedWord: number = 0;
+  public correctTypedWord: number = 0;
+  public timerId: any;
+  public time: number;
+  public correctColor: string = '#4ad836';
+  public incorrectColor: string = '#e12e2e';
+  public markerColor: string = '#b792ea';
+  public toStartTimer: boolean = true;
+  public key: string = 'typingStats';
+  public timeFlag: boolean = false;
   public allowRedirect: boolean;
   words: string[] = [
     'cat', 'dog', 'run', 'eat', 'happy', 'sad', 'house', 'tree', 'car', 'city',
@@ -85,14 +86,14 @@ export class MainComponent implements OnInit {
     'move', 'decision', 'choice', 'option', 'alternative', 'preference', 'priority', 'importance', 'significance', 'value'
   ];
   selectedTime: number;
-
   constructor(private appService: AppService, private router: Router) { }
   ngOnInit() {
   }
-  ngOnDestroy() {
-    if (this.timerId) {
-      clearInterval(this.timerId);
-    }
+  getTime(buttonNumber: number) {
+    this.timeFlag = true;
+    this.time = buttonNumber;
+    this.selectedTime = buttonNumber;
+    this.createWord(buttonNumber);
   }
   getSpanElement() {
     setTimeout(() => {
@@ -236,10 +237,12 @@ export class MainComponent implements OnInit {
   removeLastCharacter() {
     this.messageCurrentValue = this.messageCurrentValue.slice(0, -1);
   }
-  getTime(buttonNumber: number) {
-    this.timeFlag = true;
-    this.time = buttonNumber;
-    this.selectedTime = buttonNumber;
-    this.createWord(buttonNumber);
+  disablePaste(event: ClipboardEvent) {
+    event.preventDefault();
+  }
+  ngOnDestroy() {
+    if (this.timerId) {
+      clearInterval(this.timerId);
+    }
   }
 }

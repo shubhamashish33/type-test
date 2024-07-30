@@ -57,7 +57,7 @@ textarea {
     margin-top: 1.25rem;
     height: 6.25rem;
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     resize: none;
     font-family: "Roboto Mono", monospace;
     border: 0.0625rem solid var(--accent);

@@ -6,7 +6,7 @@
     <div class="container" style="text-align: center;">
       <div class="content">
         <div class="time-selection" *ngIf="!timeFlag">
-          <h3>Select duration to start</h3>
+          <h3 style="font-weight: normal;">Select duration to start:</h3>
           <button (click)="getTime(15)" [ngClass]="{'active': time === 15}">15</button>
           <button (click)="getTime(30)" [ngClass]="{'active': time === 30}">30</button>
           <button (click)="getTime(60)" [ngClass]="{'active': time === 60}">60</button>
@@ -22,7 +22,7 @@
         </div>
         <div class="inputBox" *ngIf="timeFlag">
           <textarea type="textarea" name="textInput" id="text-input" [(ngModel)]="textInput" (input)="splitText();"
-            (keydown)="onKeyDown($event)" autofocus>
+            (keydown)="onKeyDown($event)" (paste)="disablePaste($event)" autofocus>
             </textarea>
           <div class="scorecard" *ngIf="">
             <p>Words Per Minutes: {{wpm}}</p>
