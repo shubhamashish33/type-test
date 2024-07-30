@@ -95,7 +95,6 @@ export class MainComponent implements OnInit {
     //   this.getSpanElement();
     // });
     // this.message = "Shubham Ashish is here"
-
   }
   ngOnDestroy() {
     if (this.timerId) {
@@ -211,10 +210,6 @@ export class MainComponent implements OnInit {
     document.getElementById('charspan0').style.backgroundColor = "#ffffff2f";
   }
   onKeyDown(event: KeyboardEvent) {
-    if (this.toStartTimer) {
-      this.startTimer(this.time);
-    }
-    this.toStartTimer = false;
     const Length = this.textInput.length;
     if (event.key === 'Backspace' && this.messageCurrentIndex >= 0) {
       const charSpan = document.getElementById(`charspan${this.messageCurrentIndex}`);
@@ -237,6 +232,10 @@ export class MainComponent implements OnInit {
       }
     }
     else if (event.key.length === 1) {
+      if (this.toStartTimer) {
+        this.startTimer(this.time);
+      }
+      this.toStartTimer = false;
       this.messageCurrentIndex += 1;
       this.messageCurrentValue += this.message.charAt(this.messageCurrentIndex);
     }
