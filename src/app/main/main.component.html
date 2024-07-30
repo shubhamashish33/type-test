@@ -6,12 +6,12 @@
     <div class="container" style="text-align: center;">
       <div class="content">
         <div class="time-selection" *ngIf="!timeFlag">
-          <h3 style="font-weight: normal;">Select duration to start:</h3>
+          <h3 style="font-weight: normal;">Select <span class="accent">duration</span> to start:</h3>
           <button (click)="getTime(15)" [ngClass]="{'active': time === 15}">15</button>
           <button (click)="getTime(30)" [ngClass]="{'active': time === 30}">30</button>
           <button (click)="getTime(60)" [ngClass]="{'active': time === 60}">60</button>
         </div>
-        <h1 style="margin-bottom: 20px;" *ngIf="timeFlag">Time left: {{ time }} seconds</h1>
+        <h1 style="margin-bottom: 20px;" *ngIf="timeFlag">Time left: <span class="accent">{{ time }}</span> seconds</h1>
         <div class="messageBox">
           <p class="text-content">
             <ng-container *ngFor="let word of inputArray; let wordIndex = index">

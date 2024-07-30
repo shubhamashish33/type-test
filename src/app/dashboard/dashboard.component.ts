@@ -56,16 +56,16 @@ export class DashboardComponent implements OnInit {
     this.testAccuracy = parseFloat((this.correctTypedWord / this.totalCharacterCount * 100).toFixed(1));
   }
   getRating(){
-    if(this.wpm > 60 || this.testAccuracy > 90){
+    if(this.wpm > 60 && this.testAccuracy > 90){
       this.rating = "⭐⭐⭐⭐⭐";
     }
-    else if(this.wpm > 50 || this.testAccuracy > 50){
+    else if(this.wpm > 50 && this.testAccuracy > 50){
       this.rating = "⭐⭐⭐⭐";
     }
-    else if(this.wpm > 30 || this.testAccuracy > 30){
+    else if(this.wpm > 30 && this.testAccuracy > 30){
       this.rating = "⭐⭐⭐";
     }
-    else if(this.wpm > 20 || this.testAccuracy > 20){
+    else if(this.wpm > 20 && this.testAccuracy > 20){
       this.rating = "⭐⭐";
     }
     else{
