@@ -137,7 +137,6 @@ export class MainComponent implements OnInit, OnDestroy {
     }, 1000)
   }
   redirectPage() {
-    console.log("this.wpm -> ", this.wpm);
     if (this.wpm > 0) {
       this.onSaveData();
       this.allowRedirect = true;
@@ -154,6 +153,7 @@ export class MainComponent implements OnInit, OnDestroy {
     previousSavedData.push(savedObj);
     this.appService.setDataToLocal(previousSavedData, this.key);
     this.appService.setKey(this.key);
+    this.wpm = savedObj.wpm;
   }
   getRandomNumber(): number {
     return Math.floor(Math.random() * 500);
