@@ -6,17 +6,20 @@
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", sans-serif;
     --text: #eee6fa;
-    --background: #2c2e31;
+    --background: #0f1113;
     --primary: #b792ea;
     --secondary: #e12e2e;
-    --accent: #4ad836;
-    color: var(--text);
+    --accent: #63ea71;
 }
 
 .container {
     width: 80%;
     margin: auto;
     margin-top: 3.75rem;
+    background-color: var(--background);
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+    color: var(--text);
 }
 
 .current {
@@ -24,6 +27,7 @@
     justify-content: space-around;
     margin-bottom: 2.5rem;
     padding: 1.25rem 0rem 0rem 0rem;
+    align-items: center;
 }
 
 .savedDataContainer, .top-header {
@@ -36,7 +40,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
-    background-color: #1B1B19;
     padding: 1.25rem;
     border-radius: 1.25rem;
 }
@@ -46,7 +49,13 @@
     text-align: center;
     padding: 0rem 0.625rem;
 }
-
+.accent{
+    color: var(--accent);
+}
+span {
+    font-family: "Roboto Mono", monospace;
+    transition: .1s;
+}
 
 table {
     width: 100%;

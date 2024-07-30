@@ -1,29 +1,28 @@
 <div class="container">
     <div class="top-header">
-        <h3>Current Stats</h3>
+        <h3>Current <span>Stats</span></h3>
         <div class="current">
             <div class="currentContainer">
-                <h3>Words Per Minute: {{wpm}}</h3>
-                <h3>Incorrect Characters: {{misTypedWord}}</h3>
-                <h3>Correct Characters: {{correctTypedWord}}</h3>
+                <span class="accent">Words Per Minute: {{wpm}}</span>
+                <span>Incorrect Characters: {{misTypedWord}}</span>
+                <span>Correct Characters: {{correctTypedWord}}</span>
             </div>
-            <div class="rating">
+            <div class="rating" style="text-align: center;">
                 <h2>{{rating}}</h2>
-                <h3 style="padding-top: 20px;">RATING</h3>
             </div>
             <div class="testresult">
-                <h3> Maximum WPM:  {{highestWPM}}</h3>
-                <h3>Raw WPM: {{rawWpm}}</h3>
-                <h3>Accuracy : {{testAccuracy}}%</h3>
+                <span> Maximum WPM:  <span class="accent">{{highestWPM}}</span></span>
+                <span>Raw WPM: {{rawWpm}}</span>
+                <span>Accuracy : {{testAccuracy}}%</span>
             </div>
         </div>
     </div>
     <div class="savedDataContainer">
-        <h3 style="margin-bottom: 20px;">Saved Previous Data</h3>
+        <h3 style="margin-bottom: 20px;">Previous <span class="accent">Typing</span> Score</h3>
         <table>
             <tr>
                 <th>Sr. No</th>
-                <th>Words Per Minutes</th>
+                <th><span class="accent">Words Per Minutes</span></th>
                 <th>Incorrect Characters</th>
                 <th>Correct Characters</th>
             </tr>

@@ -5,10 +5,10 @@
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", sans-serif;
     --text: #eee6fa;
-    --background: #2c2e31;
+    --background: #0f1113;
     --primary: #b792ea;
     --secondary: #e12e2e;
-    --accent: #4ad836;
+    --accent: #63ea71;
     color: var(--text);
     background-color: var(--background);
 }
@@ -43,6 +43,11 @@
     background-color: transparent;
     border: none;
     font-size: 1.5rem;
+    cursor: pointer;
+}
+.time-selection button:hover{
+    color: var(--accent);
+    transition: .5s;
 }
 .active{
     color: var(--primary);
@@ -57,13 +62,15 @@ textarea {
     margin-top: 1.25rem;
     height: 6.25rem;
     width: 80%;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     resize: none;
     font-family: "Roboto Mono", monospace;
     border: 0.0625rem solid var(--accent);
     border-radius: 0.125rem;
 }
-
+.accent{
+    color: var(--accent);
+}
 span {
     font-family: "Roboto Mono", monospace;
     transition: .1s;

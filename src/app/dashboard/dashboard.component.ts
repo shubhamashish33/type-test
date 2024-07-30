@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
     this.wpm = recentData.wpm;
     this.correctTypedWord = recentData.correctTypedWord;
     this.misTypedWord = recentData.misTypedWord;
-    this.totalCharacterCount = recentData.totalCharacter;
+    this.totalCharacterCount = this.correctTypedWord + this.misTypedWord;
     this.getHightestWPM();
   }
   getHightestWPM() {

@@ -1,27 +1,53 @@
+
 # TypeTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+Test your typing speed with this Angular-based application. You can visit site [here🔗](https://type-test-phi.vercel.app/)
 
-## Development server
+## Screenshot
+![alt text](image.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
+- Node.js
+- Angular CLI
 
-## Build
+### Installation
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/shubhamashish33/type-test.git
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Running the App
+- Development server:
+  ```sh
+  ng serve
+  ```
+  Navigate to `http://localhost:4200/`.
 
-## Running unit tests
+### Building the App
+- Production build:
+  ```sh
+  ng build --prod
+  ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Testing
+- Unit tests:
+  ```sh
+  ng test
+  ```
+- End-to-end tests:
+  ```sh
+  ng e2e
+  ```
 
-## Running end-to-end tests
+## Usage
+Generate components and services using Angular CLI commands.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
