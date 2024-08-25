@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,9 @@ export class DashboardComponent implements OnInit {
   public testAccuracy: number = 0;
   public rating: string = "";
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getData();
@@ -71,5 +74,8 @@ export class DashboardComponent implements OnInit {
     else{
       this.rating = "⭐";
     }
+  }
+  goBack(){
+    this.router.navigate(['/']);
   }
 }

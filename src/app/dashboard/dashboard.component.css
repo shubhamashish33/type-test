@@ -43,6 +43,14 @@
     padding: 1.25rem;
     border-radius: 1.25rem;
 }
+.backbtn{
+    font-family: "Roboto Mono", monospace;
+}
+.backbtn:hover{
+color: var(--accent);
+cursor: pointer;
+transition: .4s;
+}
 
 .savedData {
     display: flex;
